@@ -59,9 +59,13 @@ void adc_setup(void) {
         /* We want to read the temperature sensor, so we have to enable it. */
         adc_enable_temperature_sensor();
         adc_set_sample_time_on_all_channels(ADC1, ADC_SMPR1_SMP_61DOT5CYC);
-	uint8_t channel_array[16];
-	channel_array[0]=16; // Vts (Internal temperature sensor
+
+	uint8_t channel_array[16]; // full array, but this example only uses one entry. 
+
+	// select the channel you want to sample here: 
+	//channel_array[0]=16; // Vts (Internal temperature sensor
 	channel_array[0]=1; //ADC1_IN1 (PA0)
+
 	adc_set_regular_sequence(ADC1, 1, channel_array);
 	adc_set_resolution(ADC1, ADC_CFGR_RES_12_BIT);
         adc_power_on(ADC1);

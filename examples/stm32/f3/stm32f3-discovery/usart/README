@@ -1,0 +1,29 @@
+------------------------------------------------------------------------------
+README
+------------------------------------------------------------------------------
+
+This example program sends some characters on USART2 on the
+ST STM32F3DISCOVERY eval board.
+
+The terminal settings for the receiving device/PC are 115200 8n1.
+
+The sending is done in a blocking way in the code.
+
+The program also recieves characters and prints them with <> around
+the recieved characters. 
+
+If an overrun happens "R" is printed, and the flag is cleard to reenable
+reception. 
+
+If a framing error happens "F" is printed, and the flag is cleard to reenable
+reception. 
+
+If a parity error happens "R" is printed, and the flag is cleard to reenable
+reception. (this cannot currently happen as parity is disabled). 
+
+
+TODO: Figure out why
+- the baud rate passed to set_baudrate is 1/4 of what is wanted. 
+- the RDR is called RDR here in the code and in my datasheet, but the 
+library code seems to want to use "DR" which I can't find anywhere. 
+
